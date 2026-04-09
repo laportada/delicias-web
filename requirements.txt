@@ -1,0 +1,12 @@
+# requirements.txt
+bcrypt
+blinker
+click
+colorama
+Flask
+Flask-Bcrypt
+itsdangerous
+Jinja2
+MarkupSafe
+PyMySQL
+Werkzeug

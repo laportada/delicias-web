@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Delicias Web{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('quienes_somos') }}">Quiénes Somos</a></li>
+                <li><a href="{{ url_for('menu') }}">Menú</a></li>
+                <li><a href="{{ url_for('horarios') }}">Horarios</a></li>
+                <li><a href="{{ url_for('galeria') }}">Galería</a></li>
+                <li><a href="{{ url_for('delivery') }}">Delivery</a></li>
+                <li><a href="{{ url_for('servicios') }}">Servicios</a></li>
+                <li><a href="{{ url_for('contacto') }}">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2026 Delicias Web. Todos los derechos reservados.</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
