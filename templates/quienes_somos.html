@@ -1,16 +1,28 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Quiénes Somos - Delicias Web{% endblock %}</title>
-</head>
-<body>
-    {% extends "base.html" %}
-    {% block content %}
+{% extends "base.html" %}
+
+{% block title %}Quiénes Somos - Delicias Web{% endblock %}
+
+{% block content %}
+<section id="quienes-somos">
     <h1>Quiénes Somos</h1>
-    <p>Delicias Web es una cafetería familiar fundada en 2020, dedicada a ofrecer productos de calidad y un ambiente acogedor para nuestros clientes.</p>
-    <p>Nuestra misión es brindar momentos de felicidad a través de deliciosos cafés y pasteles, preparados con ingredientes frescos y locales.</p>
-    {% endblock %}
-</body>
-</html>
+    
+    <div class="content-container">
+        <p>Delicias Web es una cafetería familiar fundada en 2020, dedicada a ofrecer productos de calidad y un ambiente acogedor para nuestros clientes.</p>
+        
+        <h2>Nuestra Misión</h2>
+        <p>Brindar momentos de felicidad a través de deliciosos cafés y pasteles, preparados con ingredientes frescos y locales.</p>
+        
+        <h2>Nuestra Visión</h2>
+        <p>Ser la cafetería más querida de la ciudad, reconocida por la excelencia en nuestros productos y el trato amable a nuestros clientes.</p>
+        
+        <h2>¿Por Qué Elegirnos?</h2>
+        <ul>
+            <li>✅ Ingredientes frescos y de calidad</li>
+            <li>✅ Ambiente cálido y acogedor</li>
+            <li>✅ Atención al cliente excepcional</li>
+            <li>✅ Delivery rápido y confiable</li>
+            <li>✅ Precios accesibles</li>
+        </ul>
+    </div>
+</section>
+{% endblock %}

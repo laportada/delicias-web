@@ -1,25 +1,43 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Home - Delicias Web{% endblock %}</title>
-</head>
-<body>
-    {% extends "base.html" %}
-    {% block content %}
-    <section id="hero">
-        <h1>Bienvenido a Delicias Web</h1>
-        <p>Tu cafetería favorita en la ciudad. Disfruta de nuestros deliciosos cafés, pasteles y ambiente acogedor.</p>
-        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo de Delicias Web" style="max-width: 200px; margin: 1rem 0;">
-        <a href="{{ url_for('menu') }}" class="btn">Ver Nuestro Menú</a>
-    </section>
+{% extends "base.html" %}
 
-    <section id="about-preview">
-        <h2>Un Poco Sobre Nosotros</h2>
-        <p>Somos una cafetería familiar dedicada a ofrecer los mejores productos frescos y un servicio excepcional. Ven a visitarnos y descubre por qué somos la opción preferida de la comunidad.</p>
-        <a href="{{ url_for('quienes_somos') }}" class="btn">Conócenos Más</a>
-    </section>
-    {% endblock %}
-</body>
-</html>
+{% block title %}Home - Delicias Web{% endblock %}
+
+{% block content %}
+<section id="hero">
+    <div class="hero-content">
+        <h1>Bienvenido a Delicias Web</h1>
+        <p class="hero-subtitle">Tu cafetería favorita en la ciudad</p>
+        <p>Disfruta de nuestros deliciosos cafés, pasteles y ambiente acogedor. ☕</p>
+        
+        <div class="hero-buttons">
+            <a href="{{ url_for('menu') }}" class="btn btn-primary">Ver Menú</a>
+            {% if not session.get('usuario_id') %}
+                <a href="{{ url_for('index') }}" class="btn btn-secondary">Registrarse</a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section id="about-preview">
+    <h2>¿Quiénes Somos?</h2>
+    <p>Somos una cafetería familiar dedicada a ofrecer los mejores productos frescos y un servicio excepcional. Ven a visitarnos y descubre por qué somos la opción preferida de la comunidad.</p>
+    <a href="{{ url_for('quienes_somos') }}" class="btn">Conócenos Más</a>
+</section>
+
+<section id="features">
+    <div class="features-grid">
+        <div class="feature-card">
+            <h3>☕ Cafés Frescos</h3>
+            <p>Preparados con granos de calidad premium cada día.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🎂 Pasteles Deliciosos</h3>
+            <p>Hechizos artesanales y recetas tradicionales.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🚚 Delivery Rápido</h3>
+            <p>Entrega en 30-45 minutos a tu domicilio.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

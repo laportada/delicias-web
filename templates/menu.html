@@ -1,37 +1,30 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Menú - Delicias Web{% endblock %}</title>
-</head>
-<body>
-    {% extends "base.html" %}
-    {% block content %}
+{% extends "base.html" %}
+
+{% block title %}Menú - Delicias Web{% endblock %}
+
+{% block content %}
+<section id="menu-section">
     <h1>Nuestro Menú</h1>
-    <p>Descubre nuestras deliciosas opciones para todos los gustos.</p>
+    <p class="subtitle">Disfruta de nuestras deliciosas opciones</p>
 
-    <section id="cafes">
-        <h2>Cafés</h2>
-        <ul>
-            <li><strong>Espresso</strong> - $2.50</li>
-            <li><strong>Cappuccino</strong> - $3.50</li>
-            <li><strong>Latte</strong> - $4.00</li>
-            <li><strong>Mocha</strong> - $4.50</li>
-        </ul>
-    </section>
+    {% if productos %}
+        <div class="productos-grid">
+            {% for producto in productos %}
+                <div class="producto-card">
+                    <h3>{{ producto.nombre }}</h3>
+                    <p class="categoria">{{ producto.categoria }}</p>
+                    <p class="descripcion">{{ producto.descripcion }}</p>
+                    <p class="precio">${{ "%.2f"|format(producto.precio) }}</p>
+                    <a href="{{ url_for('ver_producto', id=producto.id) }}" class="btn">Ver Detalles</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No hay productos disponibles en este momento.</p>
+    {% endif %}
 
-    <section id="pasteles">
-        <h2>Pasteles y Postres</h2>
-        <ul>
-            <li><strong>Tarta de Chocolate</strong> - $5.00</li>
-            <li><strong>Croissant</strong> - $2.00</li>
-            <li><strong>Muffin de Arándanos</strong> - $3.00</li>
-            <li><strong>Galleta con Chispas</strong> - $1.50</li>
-        </ul>
-    </section>
-
-    <a href="{{ url_for('delivery') }}" class="btn">Pedir Delivery</a>
-    {% endblock %}
-</body>
-</html>
+    <div class="menu-actions">
+        <a href="{{ url_for('delivery') }}" class="btn btn-primary">Hacer un Pedido</a>
+    </div>
+</section>
+{% endblock %}

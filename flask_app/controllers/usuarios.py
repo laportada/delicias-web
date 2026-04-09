@@ -2,9 +2,11 @@ from flask import render_template, redirect, request, session
 from flask_app import app, bcrypt
 from flask_app.models.usuario import Usuario
 
-# --------- RUTA RAÍZ: Muestra login/registro ---------
+# --------- RUTA RAÍZ: Muestra login/registro o home ---------
 @app.route("/")
 def index():
+    if session.get("usuario_id"):
+        return redirect("/home")
     return render_template("index.html")
 
 # --------- REGISTRO ---------

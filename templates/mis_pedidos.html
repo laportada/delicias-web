@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Mis Pedidos - Delicias Web{% endblock %}
+
+{% block content %}
+<section id="pedidos-section">
+    <h1>Mis Pedidos</h1>
+    <p class="subtitle">Historial de tus pedidos y entregas</p>
+
+    {% if pedidos %}
+        <div class="pedidos-list">
+            {% for pedido in pedidos %}
+                <div class="pedido-card">
+                    <div class="pedido-header">
+                        <h3>Pedido #{{ pedido.id }}</h3>
+                        <span class="estado-badge estado-{{ pedido.estado }}">{{ pedido.estado | upper }}</span>
+                    </div>
+                    <div class="pedido-body">
+                        <p><strong>Fecha:</strong> {{ pedido.created_at }}</p>
+                        <p><strong>Dirección:</strong> {{ pedido.direccion }}</p>
+                        <p><strong>Total:</strong> ${{ "%.2f"|format(pedido.total) }}</p>
+                        {% if pedido.notas %}
+                            <p><strong>Notas:</strong> {{ pedido.notas }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-data">Aún no tienes pedidos. <a href="{{ url_for('menu') }}">¡Haz tu primer pedido!</a></p>
+    {% endif %}
+</section>
+{% endblock %}
