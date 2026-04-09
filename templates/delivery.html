@@ -3,44 +3,146 @@
 {% block title %}Delivery - Delicias Web{% endblock %}
 
 {% block content %}
-<section id="delivery-section">
-    <h1>Realizar Pedido</h1>
-    <p class="subtitle">Completa el formulario para tu delivery</p>
+<section class="delivery">
+    <div class="delivery-header">
+        <h1>Delivery de Productos</h1>
+        <p class="subtitle">Realiza tu pedido aquí, te llegará en 30-45 minutos</p>
+    </div>
 
-    {% if not session.get('usuario_id') %}
-        <div class="alert alert-warning">
-            Debes <a href="{{ url_for('index') }}">iniciar sesión</a> para hacer pedidos.
+    <div class="delivery-container">
+        <!-- Menú de productos -->
+        <div class="menu-seleccion">
+            <h2>Nuestros Productos</h2>
+            <div class="productos-delivery">
+                {% for producto in productos %}
+                <div class="producto-delivery-card">
+                    <h3>{{ producto.nombre }}</h3>
+                    <p class="cat-badge">{{ producto.categoria }}</p>
+                    <p class="desc">{{ producto.descripcion }}</p>
+                    <p class="precio-item">${{ "%.2f"|format(producto.precio) }}</p>
+                    <button class="btn btn-small" type="button" onclick="agregarAlPedido('{{ producto.id }}', '{{ producto.nombre }}', {{ producto.precio }})">Agregar</button>
+                </div>
+                {% endfor %}
+            </div>
         </div>
-    {% else %}
-        <div class="delivery-form-container">
-            <form method="POST" action="{{ url_for('crear_pedido') }}" class="delivery-form">
+
+        <!-- Formulario de pedido -->
+        <div class="pedido-sidebar">
+            <h2>Tu Pedido</h2>
+            
+            <div class="resumen-box">
+                <h3>Resumen</h3>
+                <div id="itemsPedido" class="items-list"></div>
+                <div class="divider"></div>
+                <div class="total-box">
+                    <strong>Total:</strong> $<span id="totalPedido">0.00</span>
+                </div>
+            </div>
+
+            <form method="POST" action="{{ url_for('delivery') }}" class="delivery-form">
+                <h3 style="margin-top: 2rem;">Tus Datos</h3>
+                
                 <div class="form-group">
-                    <label for="direccion">Dirección de Entrega:</label>
-                    <textarea id="direccion" name="direccion" required minlength="5" placeholder="Calle, número, piso, etc."></textarea>
+                    <label for="nombre">Nombre Completo *</label>
+                    <input type="text" id="nombre" name="nombre" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="total">Monto Total:</label>
-                    <input type="number" id="total" name="total" step="0.01" min="0.01" required placeholder="0.00">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="notas">Notas Especiales (opcional):</label>
-                    <textarea id="notas" name="notas" placeholder="Ej: Sin azúcar, alergias, etc."></textarea>
+                    <label for="telefono">Teléfono *</label>
+                    <input type="tel" id="telefono" name="telefono" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Confirmar Pedido</button>
+                <h3>Dirección</h3>
+
+                <div class="form-group">
+                    <label for="direccion">Dirección Completa *</label>
+                    <input type="text" id="direccion" name="direccion" required>
+                </div>
+
+                <h3>Comentarios</h3>
+
+                <div class="form-group">
+                    <label for="notas">Notas Especiales (opcional)</label>
+                    <textarea id="notas" name="notas" placeholder="Alergias, preferencias..."></textarea>
+                </div>
+
+                <input type="hidden" id="total" name="total" value="0">
+
+                <button type="submit" class="btn btn-primary btn-large" style="width: 100%;">Confirmar Pedido</button>
             </form>
-        </div>
 
-        <div class="delivery-info">
-            <h3>ℹ️ Información de Entrega</h3>
-            <ul>
-                <li>⏱️ Tiempo estimado: 30-45 minutos</li>
-                <li>🚚 Costo de envío: Consultar</li>
-                <li>💳 Métodos de pago: Efectivo o transferencia</li>
-            </ul>
+            <div class="info-delivery">
+                <h3>📦 Info de Entrega</h3>
+                <p>⏱️ 30-45 minutos</p>
+                <p>📞 Nos contactaremos por WhatsApp</p>
+                <p>💳 Efectivo o transferencia</p>
+            </div>
         </div>
-    {% endif %}
+    </div>
 </section>
+
+<script>
+let itemsPedido = {};
+
+function agregarAlPedido(id, nombre, precio) {
+    if (!itemsPedido[id]) {
+        itemsPedido[id] = { nombre: nombre, precio: precio, cantidad: 0 };
+    }
+    itemsPedido[id].cantidad++;
+    actualizarResumen();
+}
+
+function actualizarResumen() {
+    let html = '';
+    let total = 0;
+    
+    for (let id in itemsPedido) {
+        let item = itemsPedido[id];
+        let subtotal = item.precio * item.cantidad;
+        total += subtotal;
+        html += `<div class="item-row">
+                    <span>${item.nombre} x${item.cantidad}</span>
+                    <span>$${subtotal.toFixed(2)}</span>
+                </div>`;
+    }
+    
+    document.getElementById('itemsPedido').innerHTML = html || '<p style="text-align: center; color: #999; padding: 1rem;">Sin items</p>';
+    document.getElementById('totalPedido').textContent = total.toFixed(2);
+    document.getElementById('total').value = total.toFixed(2);
+}
+</script>
+
+<style>
+.delivery { padding: 2rem 0; }
+.delivery-header { text-align: center; margin-bottom: 3rem; }
+.delivery-container { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
+.menu-seleccion { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+.menu-seleccion h2 { color: #8b4513; margin-bottom: 1.5rem; margin-top: 0; }
+.productos-delivery { display: grid; gap: 1rem; }
+.producto-delivery-card { background: linear-gradient(135deg, rgba(139,69,19,0.05), rgba(212,165,116,0.1)); padding: 1.2rem; border-radius: 8px; border: 1px solid rgba(139,69,19,0.2); }
+.producto-delivery-card h3 { margin: 0 0 0.5rem 0; color: #8b4513; }
+.cat-badge { display: inline-block; background: #d4a574; color: white; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; margin: 0 0 0.5rem 0; }
+.desc { font-size: 0.9rem; color: #666; margin: 0.5rem 0; }
+.precio-item { font-size: 1.3rem; color: #8b4513; font-weight: 600; margin: 0.8rem 0; }
+.pedido-sidebar { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); height: fit-content; position: sticky; top: 100px; }
+.pedido-sidebar h2 { color: #8b4513; margin-top: 0; }
+.pedido-sidebar h3 { color: #8b4513; font-size: 1.1rem; margin-bottom: 1rem; }
+.resumen-box { background: linear-gradient(135deg, rgba(139,69,19,0.05), rgba(212,165,116,0.1)); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; border: 2px solid #d4a574; }
+.items-list { margin-bottom: 1rem; }
+.item-row { display: flex; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid rgba(139,69,19,0.2); font-size: 0.95rem; }
+.divider { border-top: 2px solid #8b4513; margin: 1rem 0; }
+.total-box { font-size: 1.2rem; color: #8b4513; text-align: right; }
+.info-delivery { background: #f0f8ff; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #8b4513; margin-top: 2rem; }
+.info-delivery h3 { margin-top: 0; color: #8b4513; }
+.info-delivery p { margin: 0.5rem 0; color: #666; font-size: 0.95rem; }
+@media (max-width: 768px) {
+    .delivery-container { grid-template-columns: 1fr; }
+    .pedido-sidebar { position: static; }
+}
+</style>
 {% endblock %}

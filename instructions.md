@@ -11,11 +11,13 @@ A todas las carpetas correspondiente crearles un __init__.py
 ## Sección 2: Tareas Pendientes
 
 - [ ] Utiliza por defecto python.
-- [ ] Utiliza el framework reflex para crear webs
 - [ ] Haz Huso de buenas practicas
 - [ ] refactoriza el codigo siempre que se pueda
 - [ ] crea test de las funcionalidades principales
-- [ ] Tarea 2
+- [ ] Implementar la pagina de menu con datos dinamicos
+- [ ] configurar la base de datos para el restaurante y delivery
+- [ ] delivery es parte del restaurante subconjunto
+- [ ] 
 
 ## Sección 3: Notas
 

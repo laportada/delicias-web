@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block title %}Delicias Web - Bienvenido{% endblock %}
+
+{% block content %}
+<section class="hero" id="hero">
+    <div class="hero-surface">
+        <div class="hero-copy fade-in">
+            <span class="eyebrow">Cafetería & Repostería</span>
+            <h1>Delicias Web</h1>
+            <p class="hero-subtitle">Tu espacio premium para café, pastelería y eventos.</p>
+            <p class="hero-description">Un lugar donde cada bebida y cada postre se crea con ingredientes seleccionados y una presentación impecable.</p>
+            <div class="hero-buttons">
+                <a href="#historia" class="btn btn-secondary">Nuestra Historia</a>
+                <a href="#contactanos" class="btn btn-primary">Contáctanos</a>
+            </div>
+        </div>
+        <div class="hero-visual fade-in delay-1">
+            <div class="hero-card">
+                <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Delicias Web">
+                <div class="hero-card-text">
+                    <p>Calidez, diseño y sabor en un solo lugar.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#historia" class="scroll-indicator">
+        <span class="scroll-arrow">⌄</span>
+        <span>Descubre</span>
+    </a>
+</section>
+
+<section class="hero-statements fade-in delay-2">
+    <div class="hero-statements-grid">
+        <div class="statement-card">Tradicionalmente hecho.</div>
+        <div class="statement-card">Irresistiblemente delicioso.</div>
+        <div class="statement-card">Más de 50 años de calidad.</div>
+    </div>
+</section>
+
+<section class="historia" id="historia">
+    <div class="historia-grid">
+        <div class="historia-copy">
+            <span class="eyebrow">Nuestra Historia</span>
+            <h2>Un viaje de sabor y tradición</h2>
+            <p>Delicias Web nació para crear un café único, donde cada preparación refleja pasión, calidad y un estilo refinado.</p>
+        </div>
+        <div class="historia-cards">
+            <div class="historia-card">
+                <h3>Origen auténtico</h3>
+                <p>Un proyecto inspirado en recetas artesanales y experiencias cafeteras de alto nivel.</p>
+            </div>
+            <div class="historia-card">
+                <h3>Ingredientes selectos</h3>
+                <p>Materias primas frescas y de calidad, pensadas para un sabor memorable.</p>
+            </div>
+            <div class="historia-card">
+                <h3>Atención personalizada</h3>
+                <p>Un servicio cercano y detallista que acompaña cada pedido o evento.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="home-intro">
+    <div class="intro-grid">
+        <div class="intro-copy">
+            <span class="eyebrow">Delicias que enamoran</span>
+            <h2>Un lugar pensado para saborear cada instante</h2>
+            <p>En Delicias Web combinamos diseño, sabores artesanales y un servicio cercano para que tu visita sea inolvidable.</p>
+        </div>
+        <div class="intro-cards">
+            <div class="intro-card">
+                <h3>Cafés de especialidad</h3>
+                <p>Desde espresso hasta bebidas de autor, siempre con granos de la más alta calidad.</p>
+            </div>
+            <div class="intro-card">
+                <h3>Pastelería fina</h3>
+                <p>Postres elaborados con recetas tradicionales, frescura diaria y presentación cuidada.</p>
+            </div>
+            <div class="intro-card">
+                <h3>Eventos y catering</h3>
+                <p>Opciones personalizadas para celebraciones, reuniones y pedidos especiales.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contactanos" id="contactanos">
+    <div class="contactanos-inner">
+        <div class="contactanos-copy">
+            <span class="eyebrow">Contáctanos</span>
+            <h2>Hablemos sobre tu pedido</h2>
+            <p>Deja tus datos y te responderemos con una propuesta rápida y personalizada.</p>
+        </div>
+        <form class="contactanos-form" action="#" method="POST">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono">
+            </div>
+            <div class="form-group">
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

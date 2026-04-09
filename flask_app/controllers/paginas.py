@@ -1,15 +1,15 @@
 from flask import render_template
 from flask_app import app
 
-# --------- PÁGINA PRINCIPAL ---------
-@app.route("/home")
-def home():
-    return render_template("home.html")
+# --------- NUESTRA HISTORIA ---------
+@app.route("/historia")
+def historia():
+    return render_template("historia.html")
 
-# --------- QUIÉNES SOMOS ---------
-@app.route("/quienes_somos")
-def quienes_somos():
-    return render_template("quienes_somos.html")
+# --------- EVENTOS Y CATERING ---------
+@app.route("/eventos")
+def eventos():
+    return render_template("eventos.html")
 
 # --------- HORARIOS ---------
 @app.route("/horarios")

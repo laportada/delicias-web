@@ -2,12 +2,10 @@ from flask import render_template, redirect, request, session
 from flask_app import app, bcrypt
 from flask_app.models.usuario import Usuario
 
-# --------- RUTA RAÍZ: Muestra login/registro o home ---------
+# --------- RUTA HOMEPAGE ---------
 @app.route("/")
 def index():
-    if session.get("usuario_id"):
-        return redirect("/home")
-    return render_template("index.html")
+    return render_template("portada.html")
 
 # --------- REGISTRO ---------
 @app.route("/registro", methods=["POST"])

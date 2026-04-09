@@ -3,28 +3,76 @@
 {% block title %}Galería - Delicias Web{% endblock %}
 
 {% block content %}
-<section id="galeria">
-    <h1>Galería</h1>
-    
-    <div class="galeria-container">
+<section class="galeria">
+    <div class="galeria-header">
+        <h1>Nuestra Galería</h1>
+        <p class="subtitle">Visualiza nuestros mejores momentos y creaciones</p>
+    </div>
+
+    <div class="galeria-intro">
+        <p>Aquí te mostramos la calidad y creatividad de nuestros productos. Cada imagen cuenta la historia de la pasión que ponemos en cada creación.</p>
+    </div>
+
+    <div class="galeria-grid">
         <div class="galeria-item">
-            <h3>Nuestro Espacio</h3>
-            <p>Ambiente cálido y acogedor para disfrutar en familia.</p>
+            <div class="galeria-image">
+                <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Café Latte">
+                <div class="galeria-overlay">
+                    <p>Café Gourmet</p>
+                </div>
+            </div>
         </div>
+        
         <div class="galeria-item">
-            <h3>Café Especiales</h3>
-            <p>Variedades de café preparadas por nuestros baristas expertos.</p>
+            <div class="galeria-image">
+                <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Pasteles">
+                <div class="galeria-overlay">
+                    <p>Pasteles Artesanales</p>
+                </div>
+            </div>
         </div>
+        
         <div class="galeria-item">
-            <h3>Pasteles Artesanales</h3>
-            <p>Deliciosos postres hechos con recetas tradicionales.</p>
+            <div class="galeria-image">
+                <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Ambiente">
+                <div class="galeria-overlay">
+                    <p>Nuestro Espacio</p>
+                </div>
+            </div>
         </div>
+        
         <div class="galeria-item">
-            <h3>Eventos</h3>
-            <p>Celebraciones y encuentros especiales en nuestro espacio.</p>
+            <div class="galeria-image">
+                <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Cupcakes">
+                <div class="galeria-overlay">
+                    <p>Cupcakes Decorados</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="galeria-item">
+            <div class="galeria-image">
+                <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Tortas">
+                <div class="galeria-overlay">
+                    <p>Tortas Personalizadas</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="galeria-item">
+            <div class="galeria-image">
+                <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Eventos">
+                <div class="galeria-overlay">
+                    <p>Catering para Eventos</p>
+                </div>
+            </div>
         </div>
     </div>
-    
-    <p><em>Próximamente: Más fotos de nuestros productos y ambiente.</em></p>
+
+    <div class="galeria-cta">
+        <h2>¿Te gustaría algo especial?</h2>
+        <p>Contáctanos para crear algo único para tu evento</p>
+        <a href="{{ url_for('contacto') }}" class="btn btn-primary">Solicitar Presupuesto</a>
+    </div>
 </section>
 {% endblock %}

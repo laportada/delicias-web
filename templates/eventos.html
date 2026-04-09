@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Eventos y Catering - Delicias Web{% endblock %}
+
+{% block content %}
+<section class="eventos">
+    <div class="eventos-header">
+        <h1>Servicios para Empresas y Eventos</h1>
+        <p class="subtitle">Hacemos tus celebraciones aún más deliciosas</p>
+    </div>
+
+    <div class="eventos-intro">
+        <p>
+            En Delicias Web nos encanta ser parte de tus momentos especiales. Ofrecemos servicios 
+            personalizados de catering y provisión para cualquier tipo de evento.
+        </p>
+    </div>
+
+    <div class="servicios-grid">
+        <div class="servicio-card">
+            <div class="servicio-icon">💒</div>
+            <h3>Bodas y Matrimonios</h3>
+            <p>Tartas personalizadas, café gourmet y pastelería fina para tu día especial. Presupuestos a medida.</p>
+            <a href="{{ url_for('contacto') }}" class="btn btn-small">Consultar</a>
+        </div>
+
+        <div class="servicio-card">
+            <div class="servicio-icon">🎉</div>
+            <h3>Cumpleaños</h3>
+            <p>Tortas temáticas, cupcakes decorados y sweet tables para todas las edades.</p>
+            <a href="{{ url_for('contacto') }}" class="btn btn-small">Consultar</a>
+        </div>
+
+        <div class="servicio-card">
+            <div class="servicio-icon">🏢</div>
+            <h3>Eventos Corporativos</h3>
+            <p>Coffee breaks, desayunos ejecutivos y reuniones con catering completo.</p>
+            <a href="{{ url_for('contacto') }}" class="btn btn-small">Consultar</a>
+        </div>
+
+        <div class="servicio-card">
+            <div class="servicio-icon">🎓</div>
+            <h3>Graduaciones</h3>
+            <p>Servicio completo de bebidas, postres y pasteles para tus graduaciones.</p>
+            <a href="{{ url_for('contacto') }}" class="btn btn-small">Consultar</a>
+        </div>
+
+        <div class="servicio-card">
+            <div class="servicio-icon">🎂</div>
+            <h3>Pastelerías Personalizadas</h3>
+            <p>Diseños exclusivos según tus necesidades. Desde lo clásico a lo más creativo.</p>
+            <a href="{{ url_for('contacto') }}" class="btn btn-small">Consultar</a>
+        </div>
+
+        <div class="servicio-card">
+            <div class="servicio-icon">☕</div>
+            <h3>Coffee Bars Temáticos</h3>
+            <p>Un espacio de café y conversación en tu evento. Equipamiento y personal incluido.</p>
+            <a href="{{ url_for('contacto') }}" class="btn btn-small">Consultar</a>
+        </div>
+    </div>
+
+    <div class="proceso-section">
+        <h2>Nuestro Proceso</h2>
+        <div class="proceso-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Consulta</h3>
+                <p>Cuéntanos sobre tu evento y tus preferencias</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Cotización</h3>
+                <p>Te preparamos un presupuesto personalizado</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Acuerdo</h3>
+                <p>Confirmamos detalles y fecha de entrega</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Entrega</h3>
+                <p>Llegamos a tu evento con calidad garantizada</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <h2>¿Listo para celebrar con nosotros?</h2>
+        <p>Contáctanos hoy para conocer opciones y presupuestos</p>
+        <a href="{{ url_for('contacto') }}" class="btn btn-primary btn-large">Solicitar Presupuesto</a>
+    </div>
+</section>
+{% endblock %}
