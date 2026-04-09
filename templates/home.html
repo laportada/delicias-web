@@ -8,9 +8,18 @@
 <body>
     {% extends "base.html" %}
     {% block content %}
-    <h1>Bienvenido a Delicias Web</h1>
-    <p>Tu cafetería favorita.</p>
-    <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo de Delicias Web">
+    <section id="hero">
+        <h1>Bienvenido a Delicias Web</h1>
+        <p>Tu cafetería favorita en la ciudad. Disfruta de nuestros deliciosos cafés, pasteles y ambiente acogedor.</p>
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo de Delicias Web" style="max-width: 200px; margin: 1rem 0;">
+        <a href="{{ url_for('menu') }}" class="btn">Ver Nuestro Menú</a>
+    </section>
+
+    <section id="about-preview">
+        <h2>Un Poco Sobre Nosotros</h2>
+        <p>Somos una cafetería familiar dedicada a ofrecer los mejores productos frescos y un servicio excepcional. Ven a visitarnos y descubre por qué somos la opción preferida de la comunidad.</p>
+        <a href="{{ url_for('quienes_somos') }}" class="btn">Conócenos Más</a>
+    </section>
     {% endblock %}
 </body>
 </html>

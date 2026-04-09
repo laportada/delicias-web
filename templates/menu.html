@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Menú - Delicias Web{% endblock %}</title>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+    <h1>Nuestro Menú</h1>
+    <p>Descubre nuestras deliciosas opciones para todos los gustos.</p>
+
+    <section id="cafes">
+        <h2>Cafés</h2>
+        <ul>
+            <li><strong>Espresso</strong> - $2.50</li>
+            <li><strong>Cappuccino</strong> - $3.50</li>
+            <li><strong>Latte</strong> - $4.00</li>
+            <li><strong>Mocha</strong> - $4.50</li>
+        </ul>
+    </section>
+
+    <section id="pasteles">
+        <h2>Pasteles y Postres</h2>
+        <ul>
+            <li><strong>Tarta de Chocolate</strong> - $5.00</li>
+            <li><strong>Croissant</strong> - $2.00</li>
+            <li><strong>Muffin de Arándanos</strong> - $3.00</li>
+            <li><strong>Galleta con Chispas</strong> - $1.50</li>
+        </ul>
+    </section>
+
+    <a href="{{ url_for('delivery') }}" class="btn">Pedir Delivery</a>
+    {% endblock %}
+</body>
+</html>
